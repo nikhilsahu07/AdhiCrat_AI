@@ -6,46 +6,48 @@
 ├── components  # Reusable UI components (buttons, modals, etc.)
 ├── layouts     # Page layouts (Navbar, Sidebar, etc.)
 ├── pages       # All main application pages
-│   ├── LandingPage.js
+│   ├── LandingPage.jsx
 │   ├── Auth
-│   │   ├── Login.js
-│   │   ├── Register.js
-│   │   ├── ForgotPassword.js
-│   ├── Dashboard.js
-│   ├── Profile.js
+│   │   ├── Login.jsx
+│   │   ├── Register.jsx
+│   │   ├── ForgotPassword.jsx
+│   ├── Dashboard.jsx
+│   ├── Profile.jsx
 │   ├── Productivity
-│   │   ├── VoiceDictation.js
-│   │   ├── TaskReminder.js
-│   │   ├── Translation.js
-│   │   ├── AIWriter.js
+│   │   ├── VoiceDictation.jsx
+│   │   ├── TaskReminder.jsx
+│   │   ├── Translation.jsx
+│   │   ├── AIWriter.jsx
 │   ├── InformationManagement  # Future scalability
-│   │   ├── FileOrganizer.js
-│   │   ├── NewsApp.js
-│   ├── NotFound.js
+│   │   ├── FileOrganizer.jsx
+│   │   ├── NewsApp.jsx
+│   ├── NotFound.jsx
 ├── hooks       # Custom React hooks
 ├── services    # API calls and AI integrations
+├── store.js    # Redux store setup
 ├── utils       # Helper functions
 ├── assets      # Static assets (icons, images, fonts)
-├── App.js      # Main entry point
-└── index.js    # ReactDOM rendering
+├── App.jsx      # Main entry point
+├── AppRouter.jsx # Handles routing
+└── main.jsx    # ReactDOM rendering
 ```
 
 ## Page Routes
 | Path | Component | Description |
 |------|------------|-------------|
-| `/` | `LandingPage.js` | Introduction to the app |
-| `/auth/login` | `Login.js` | User login page |
-| `/auth/register` | `Register.js` | User registration page |
-| `/auth/forgot-password` | `ForgotPassword.js` | Password recovery |
-| `/dashboard` | `Dashboard.js` | Main hub for user actions |
-| `/profile` | `Profile.js` | User profile and settings |
-| `/productivity/voice-dictation` | `VoiceDictation.js` | AI-powered transcription |
-| `/productivity/task-reminder` | `TaskReminder.js` | Task & reminder management |
-| `/productivity/translation` | `Translation.js` | Hindi-English AI translation |
-| `/productivity/ai-writer` | `AIWriter.js` | AI-generated speech/lecture content |
-| `/info-management/file-organizer` | `FileOrganizer.js` | Auto categorization & extraction (Future) |
-| `/info-management/news` | `NewsApp.js` | AI-based news recommendations (Future) |
-| `*` | `NotFound.js` | 404 Page |
+| `/` | `LandingPage.jsx` | Introduction to the app |
+| `/auth/login` | `Login.jsx` | User login page |
+| `/auth/register` | `Register.jsx` | User registration page |
+| `/auth/forgot-password` | `ForgotPassword.jsx` | Password recovery |
+| `/dashboard` | `Dashboard.jsx` | Main hub for user actions |
+| `/profile` | `Profile.jsx` | User profile and settings |
+| `/productivity/voice-dictation` | `VoiceDictation.jsx` | AI-powered transcription |
+| `/productivity/task-reminder` | `TaskReminder.jsx` | Task & reminder management |
+| `/productivity/translation` | `Translation.jsx` | Hindi-English AI translation |
+| `/productivity/ai-writer` | `AIWriter.jsx` | AI-generated speech/lecture content |
+| `/info-management/file-organizer` | `FileOrganizer.jsx` | Auto categorization & extraction (Future) |
+| `/info-management/news` | `NewsApp.jsx` | AI-based news recommendations (Future) |
+| `*` | `NotFound.jsx` | 404 Page |
 
 ## Scalability Considerations
 - **Modular Architecture**: Allows easy addition of new AI features.
