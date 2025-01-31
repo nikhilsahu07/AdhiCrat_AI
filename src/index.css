@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+.tiro-devanagari-hindi-regular {
+    font-family: "Tiro Devanagari Hindi", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .samarkan {
+    font-family: 'Samarkan', sans-serif;
+  }

@@ -5,6 +5,7 @@ import { Typography } from "@mui/material";
 import BlurText from "../Bits/BlurText/BlurText";
 import Squares from "../Bits/Squares/Squares";
 import ShinyText from "../Bits/Shinytext/ShinyText";
+import { ArrowRightAlt } from "@mui/icons-material";
 
 function LandingPage() {
   return (
@@ -19,12 +20,12 @@ function LandingPage() {
 
       {/* <div className="absolute z-10 gap-y-11 flex flex-col justify-center items-center"> */}
       <BlurText
-          text="LegisAI"
+          text="ADHICRAT"
           delay={150}
           animateBy="letters"
           direction="bottom"
           // onAnimationComplete={handleAnimationComplete}
-          className="text-9xl text-[#1e1e1e]"
+          className="text-9xl text-[#1e1e1e] samarkan"
         />
         {/* </Typography> */}
         <Link to="/app" className="bg-gray-800 px-4 py-2">

@@ -78,9 +78,7 @@ export default function Layout() {
       theme={demoTheme}
       branding={{
         title: (
-          <Typography variant="h6" className="!font-bold font-sans">
-            LegixAI
-          </Typography>
+            <span className="samarkan">Adhicrat</span>
         ),
         logo: "",
       }}
