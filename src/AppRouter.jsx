@@ -13,6 +13,7 @@ import NewsApp from "./pages/InformationManagement/NewsApp";
 import NotFound from "./pages/NotFound";
 import Layout from "./components/Layout";
 import { BrowserRouter, Route, Routes } from "react-router";
+import AppLayoutPlaceholder from "./components/AppLayoutPlaceholder";
 
 function AppRouter() {
   return (
@@ -25,6 +26,7 @@ function AppRouter() {
 
         {/* App Layout with Sidebar & Outlet */}
         <Route path="/app" element={<Layout />}>
+          <Route index element={<AppLayoutPlaceholder />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="profile" element={<Profile />} />
           
