@@ -489,7 +489,7 @@ Thank you.
           </Button>
         </Box>
         {content && (
-          <Paper elevation={2} sx={{ p: 2, bgcolor: "grey.50" }}>
+          <Paper elevation={2} sx={{ p: 2}}>
             <TextField
               fullWidth
               multiline
@@ -515,6 +515,7 @@ Thank you.
           variant="outlined"
           startIcon={<HistoryIcon />}
           onClick={() => setDrawerOpen(true)}
+          sx={{marginTop: '.5rem'}}
         >
           Saved Speeches
         </Button>

@@ -59,7 +59,7 @@ function LandingPage() {
             className="text-sm md:text-lg"
           />
         </Link>
-        {/* <SplashCursor /> */}
+        <SplashCursor />
       </section>
       <section className="h-screen p-6 bg-[#1e1e1e] text-[#e1e1e1] flex flex-col items-center justify-center gap-y-11">
           <Typography variant="h4">Productivity</Typography>
