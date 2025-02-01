@@ -1,3 +1,4 @@
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import LandingPage from "./pages/LandingPage";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
@@ -17,6 +18,7 @@ import AppLayoutPlaceholder from "./components/AppLayoutPlaceholder";
 
 function AppRouter() {
   return (
+    <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage />} />
@@ -25,6 +27,7 @@ function AppRouter() {
         <Route path="/auth/forgot-password" element={<ForgotPassword />} />
 
         {/* App Layout with Sidebar & Outlet */}
+        
         <Route path="/app" element={<Layout />}>
           <Route index element={<AppLayoutPlaceholder />} />
           <Route path="dashboard" element={<Dashboard />} />
@@ -45,6 +48,7 @@ function AppRouter() {
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
+    </GoogleOAuthProvider>
   );
 }
 

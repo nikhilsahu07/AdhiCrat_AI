@@ -12,15 +12,25 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@fullcalendar/common": "^5.11.5",
+    "@fullcalendar/core": "^6.1.15",
+    "@fullcalendar/daygrid": "^6.1.15",
+    "@fullcalendar/interaction": "^6.1.15",
+    "@fullcalendar/react": "^6.1.15",
     "@mui/icons-material": "^6.4.2",
     "@mui/material": "^6.4.2",
+    "@react-oauth/google": "^0.12.1",
     "@react-spring/web": "^9.7.5",
     "@tailwindcss/vite": "^4.0.1",
     "@toolpad/core": "^0.12.0",
+    "fullcalendar": "^6.1.15",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-quill": "^2.0.0",
     "react-router": "^7.1.4",
-    "tailwindcss": "^4.0.1"
+    "string-strip-html": "^13.4.8",
+    "tailwindcss": "^4.0.1",
+    "uuid": "^11.0.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
