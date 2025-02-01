@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 import BlurText from "../Bits/BlurText/BlurText";
 import ShinyText from "../Bits/Shinytext/ShinyText";
+import SplashCursor from "../Bits/SplashCursor/SplashCursor";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
