@@ -209,7 +209,7 @@ function VoiceDictation() {
   };
 
   return (
-    <Box sx={{ maxWidth: 800, margin: 'auto', p: 3 }}>
+    <Box sx={{ maxWidth: 800, margin: 'auto', p: 3}}>
       <Typography variant="h4" gutterBottom align="center">
         AI-Powered Voice Dictation Assistant
       </Typography>
@@ -298,7 +298,7 @@ function VoiceDictation() {
       </Box>
 
       {enhancedText && (
-        <Paper elevation={3} sx={{ p: 3, mb: 3, backgroundColor: '#e3f2fd' }}>
+        <Paper variant='elevation' elevation={3} sx={{ p: 3, mb: 3}}>
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <Typography variant="h6" gutterBottom>
               Enhanced Text
