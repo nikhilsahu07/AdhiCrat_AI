@@ -3,10 +3,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { 
   Button, 
-  Container, 
   Typography, 
   Stack, 
-  ThemeProvider, 
   createTheme,
   Snackbar,
   Alert,
@@ -20,31 +18,6 @@ import TaskForm from './TaskComponents/TaskForm';
 import Calendar from './TaskComponents/Calendar';
 import TaskList from './TaskComponents/TaskList';
 import { useGoogleLogin } from '@react-oauth/google';
-
-// Custom Modern Theme
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#3f51b5',
-      light: '#7986cb',
-      dark: '#303f9f'
-    },
-    background: {
-      default: '#f4f6f9',
-      paper: '#ffffff'
-    },
-    text: {
-      primary: '#2c3e50'
-    }
-  },
-  typography: {
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-    h3: {
-      fontWeight: 600,
-      color: '#2c3e50'
-    }
-  }
-});
 
 function TaskReminder() {
   const LOCAL_STORAGE_KEY = 'task-reminder-app';
@@ -221,12 +194,7 @@ function TaskReminder() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container maxWidth="md" sx={{ 
-        backgroundColor: theme.palette.background.default, 
-        minHeight: '100vh', 
-        py: 4 
-      }}>
+    <div className="">
         <Typography variant="h3" align="center" gutterBottom>
           Task Manager
         </Typography>
@@ -322,8 +290,7 @@ function TaskReminder() {
             </Button>
           </DialogActions>
         </Dialog>
-      </Container>
-    </ThemeProvider>
+        </div>
   );
 }
 
