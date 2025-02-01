@@ -8,23 +8,24 @@ import { PageContainer } from "@toolpad/core/PageContainer";
 import { Outlet, useLocation, useNavigate } from "react-router";
 
 const NAVIGATION = [
-  {
-    kind: "header",
-    title: "My Account",
-  },
-  {
-    segment: "dashboard",
-    title: "Dashboard",
-    icon: <DashboardIcon />,
-  },
-  {
-    segment: "profile",
-    title: "Profile",
-    icon: <AccountCircle />,
-  },
-  {
-    kind: "divider",
-  },
+  //  comming soon
+  // {
+  //   kind: "header",
+  //   title: "My Account",
+  // },
+  // {
+  //   segment: "dashboard",
+  //   title: "Dashboard",
+  //   icon: <DashboardIcon />,
+  // },
+  // {
+  //   segment: "profile",
+  //   title: "Profile",
+  //   icon: <AccountCircle />,
+  // },
+  // {
+  //   kind: "divider",
+  // },
   {
     kind: "header",
     title: "Productivity",

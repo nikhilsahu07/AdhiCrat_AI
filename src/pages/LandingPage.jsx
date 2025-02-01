@@ -63,51 +63,56 @@ function LandingPage() {
         <SplashCursor />
       </section>
       <section className="h-screen p-6 bg-[#1e1e1e] text-[#e1e1e1] flex flex-col items-center justify-center gap-y-11">
-          <Typography variant="h4">Productivity</Typography>
+        <Typography variant="h4">Productivity</Typography>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
           <Box
             sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "100%",
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+              gap: 4,
+              width: "90%",
+              maxWidth: "600px", 
+              padding: "1rem", 
             }}
-            >
-            <Box
-              sx={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))",
-                gap: 4,
-              }}
-              className="w-[100%] md:w-[50%]"
-            >
-              {cards.map((card, index) => (
-                <Card sx={{ display: "flex", justifyContent: "center" }}>
-                  <CardActionArea
-                    onClick={() => setSelectedCard(index)}
-                    data-active={selectedCard === index ? "" : undefined}
-                    sx={{
-                      height: "100%",
-                      "&[data-active]": {
-                        backgroundColor: "action.selected",
-                        "&:hover": {
-                          backgroundColor: "action.selectedHover",
-                        },
+          >
+            {cards.map((card, index) => (
+              <Card
+                sx={{ display: "flex", justifyContent: "center" }}
+                key={index}
+              >
+                <CardActionArea
+                  onClick={() => setSelectedCard(index)}
+                  data-active={selectedCard === index ? "" : undefined}
+                  sx={{
+                    height: "100%",
+                    "&[data-active]": {
+                      backgroundColor: "action.selected",
+                      "&:hover": {
+                        backgroundColor: "action.selectedHover",
                       },
-                    }}
-                  >
-                    <CardContent sx={{ height: "100%" }}>
-                      <Typography variant="h5" component="div">
-                        {card.title}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {card.description}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              ))}
-            </Box>
+                    },
+                  }}
+                >
+                  <CardContent sx={{ height: "100%" }}>
+                    <Typography variant="h5" component="div">
+                      {card.title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {card.description}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            ))}
           </Box>
+        </Box>
       </section>
     </>
   );
