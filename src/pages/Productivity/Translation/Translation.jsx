@@ -13,6 +13,7 @@ import {
   Box,
   Alert,
   CircularProgress,
+  TextareaAutosize,
 } from '@mui/material';
 import {
   SwapVert,
@@ -33,27 +34,27 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
   border: '1px solid rgba(255, 255, 255, 0.8)',
 }));
 
-const TextArea = styled(TextField)(({ theme }) => ({
-  '& .MuiOutlinedInput-root': {
-    borderRadius: '12px',
-    backgroundColor: '#ffffff',
-    transition: 'all 0.3s ease',
-    '&:hover': {
-      backgroundColor: '#fafafa',
-    },
-    '&.Mui-focused': {
-      backgroundColor: '#ffffff',
-      boxShadow: '0 0 0 2px rgba(25, 118, 210, 0.2)',
-    },
-  },
-}));
+// const TextArea = styled(TextField)(({ theme }) => ({
+//   '& .MuiOutlinedInput-root': {
+//     borderRadius: '12px',
+//     backgroundColor: '#ffffff',
+//     transition: 'all 0.3s ease',
+//     '&:hover': {
+//       backgroundColor: '#fafafa',
+//     },
+//     '&.Mui-focused': {
+//       backgroundColor: '#ffffff',
+//       boxShadow: '0 0 0 2px rgba(25, 118, 210, 0.2)',
+//     },
+//   },
+// }));
 
-const StyledIconButton = styled(IconButton)(({ theme, isActive }) => ({
-  backgroundColor: isActive ? '#e3f2fd' : 'transparent',
-  '&:hover': {
-    backgroundColor: isActive ? '#bbdefb' : '#f5f5f5',
-  },
-}));
+// const IconButton = styled(IconButton)(({ theme, isActive }) => ({
+//   backgroundColor: isActive ? '#e3f2fd' : 'transparent',
+//   '&:hover': {
+//     backgroundColor: isActive ? '#bbdefb' : '#f5f5f5',
+//   },
+// }));
 
 const Translation = () => {
   const [sourceText, setSourceText] = useState('');
@@ -147,23 +148,7 @@ const Translation = () => {
   };
 
   return (
-    <Container maxWidth="lg">
-      <StyledPaper elevation={3}>
-        <Typography 
-          variant="h4" 
-          align="center" 
-          gutterBottom 
-          sx={{
-            color: '#1565c0',
-            fontWeight: 600,
-            textTransform: 'uppercase',
-            letterSpacing: '0.5px',
-            mb: 4,
-            textShadow: '1px 1px 1px rgba(0,0,0,0.1)',
-          }}
-        >
-          Bureaucratic Translation Tool
-        </Typography>
+    <div>
 
         {error && (
           <Alert severity="error" sx={{ mb: 2 }}>
@@ -198,9 +183,9 @@ const Translation = () => {
             onClick={swapLanguages}
             color="primary"
             sx={{ 
-              bgcolor: '#e3f2fd',
+              // bgcolor: '#e3f2fd',
               boxShadow: 1,
-              '&:hover': { bgcolor: '#bbdefb' }
+              // '&:hover': { bgcolor: '#bbdefb' }
             }}
           >
             <SwapVert />
@@ -229,7 +214,7 @@ const Translation = () => {
           mb: 4 
         }}>
           <Box sx={{ position: 'relative' }}>
-            <TextArea
+            <TextField
               fullWidth
               multiline
               rows={8}
@@ -239,24 +224,24 @@ const Translation = () => {
               variant="outlined"
             />
             <Box sx={{ position: 'absolute', bottom: 8, right: 8, display: 'flex', gap: 1 }}>
-              <StyledIconButton
+              <IconButton
                 size="small"
                 isActive={isSpeakingSource}
                 onClick={() => toggleSpeech(sourceText, sourceLanguage, true)}
               >
                 {isSpeakingSource ? <VolumeOff /> : <VolumeUp />}
-              </StyledIconButton>
-              <StyledIconButton
+              </IconButton>
+              <IconButton
                 size="small"
                 onClick={() => copyToClipboard(sourceText)}
               >
                 <ContentCopy />
-              </StyledIconButton>
+              </IconButton>
             </Box>
           </Box>
 
           <Box sx={{ position: 'relative' }}>
-            <TextArea
+            <TextField
               fullWidth
               multiline
               rows={8}
@@ -266,19 +251,19 @@ const Translation = () => {
               variant="outlined"
             />
             <Box sx={{ position: 'absolute', bottom: 8, right: 8, display: 'flex', gap: 1 }}>
-              <StyledIconButton
+              <IconButton
                 size="small"
                 isActive={isSpeakingTarget}
                 onClick={() => toggleSpeech(translatedText, targetLanguage, false)}
               >
                 {isSpeakingTarget ? <VolumeOff /> : <VolumeUp />}
-              </StyledIconButton>
-              <StyledIconButton
+              </IconButton>
+              <IconButton
                 size="small"
                 onClick={() => copyToClipboard(translatedText)}
               >
                 <ContentCopy />
-              </StyledIconButton>
+              </IconButton>
             </Box>
           </Box>
         </Box>
@@ -321,8 +306,7 @@ const Translation = () => {
             {isLoading ? 'Translating...' : 'Translate'}
           </Button>
         </Box>
-      </StyledPaper>
-    </Container>
+        </div>
   );
 };
 

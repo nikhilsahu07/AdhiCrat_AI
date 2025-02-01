@@ -84,7 +84,7 @@ export default function Layout() {
     >
       <DashboardLayout>
         <PageContainer>
-          <Outlet />
+          <Outlet demoTheme={demoTheme}/>
         </PageContainer>
       </DashboardLayout>
     </AppProvider>
