@@ -1,4 +1,3 @@
-// File: pages/Productivity/VoiceDetection/components/EnhancedTextBox.jsx
 import React from 'react';
 import { Box, Paper, Typography, IconButton } from '@mui/material';
 import BookmarkIcon from '@mui/icons-material/Bookmark';

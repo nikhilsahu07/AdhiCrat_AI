@@ -1,4 +1,3 @@
-// File: pages/Productivity/VoiceDetection/services/useSpeechRecognition.js
 import { useEffect, useRef } from 'react';
 
 export const useSpeechRecognition = (onTranscriptionChange, onError) => {

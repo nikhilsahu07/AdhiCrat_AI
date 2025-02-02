@@ -1,4 +1,3 @@
-// File: pages/Productivity/VoiceDetection/components/TranscriptionBox.jsx
 import React from 'react';
 import { Box, Paper, Typography, IconButton, TextField } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';

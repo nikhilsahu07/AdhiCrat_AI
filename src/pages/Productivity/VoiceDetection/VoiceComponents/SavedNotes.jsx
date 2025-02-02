@@ -1,4 +1,3 @@
-// File: pages/Productivity/VoiceDetection/components/SavedNotes.jsx
 import React from 'react';
 import { Paper, Typography, List, ListItem, ListItemText, ListItemSecondaryAction, IconButton, Divider } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';

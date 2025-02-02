@@ -1,4 +1,3 @@
-// File: pages/Productivity/VoiceDetection/services/geminiService.js
 export const processTextWithGemini = async (text, style, isGrammarOnly = false) => {
   try {
     const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
@@ -12,8 +11,8 @@ export const processTextWithGemini = async (text, style, isGrammarOnly = false) 
     }
 
     const prompt = isGrammarOnly
-      ? `Only fix grammar and spelling errors in this text, making minimal changes: "${text}"`
-      : `Enhance this text to be more ${style} in style, fixing any grammar or spelling errors while maintaining the original meaning. Keep the enhanced text no longer than 1.5x the original length: "${text}"`;
+  ? `Fix only grammar and spelling errors in this text, making minimal changes and preserving the original meaning: "${text}"`
+  : `Enhance this text to be more ${style} in style, correcting grammar and spelling while keeping the meaning intact. Make sure the enhanced text is concise and no longer than 75% of the original length: "${text}"`;
 
     const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${apiKey}`, {
       method: 'POST',

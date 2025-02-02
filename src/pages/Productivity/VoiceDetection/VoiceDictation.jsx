@@ -1,4 +1,3 @@
-// File: pages/Productivity/VoiceDetection/VoiceDictation.jsx
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, Snackbar, Alert } from '@mui/material';
 import TranscriptionBox from './VoiceComponents/TranscriptionBox';
