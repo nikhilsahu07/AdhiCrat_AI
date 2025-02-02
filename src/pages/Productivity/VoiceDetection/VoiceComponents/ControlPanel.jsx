@@ -7,23 +7,54 @@ import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 
-// Create pulsing animation
-const pulse = keyframes`
+// Create ripple animation
+const ripple = keyframes`
   0% {
     transform: scale(1);
+    opacity: 1;
   }
   50% {
-    transform: scale(1.2);
+    transform: scale(1.3);
+    opacity: 0.5;
   }
   100% {
-    transform: scale(1);
+    transform: scale(1.6);
+    opacity: 0;
   }
 `;
 
-// Styled mic button component
-const AnimatedMicButton = styled(IconButton)`
-  &.active {
-    animation: ${pulse} 1.5s ease-in-out infinite;
+// Styled container for mic button with ripple effect
+const AnimatedMicContainer = styled.div`
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: ${props => props.isListening ? '#ef5350' : '#1976d2'};
+    opacity: 0;
+    z-index: 0;
+  }
+
+  &.active::before {
+    animation: ${ripple} 2s ease-out infinite;
+  }
+
+  &.active::after {
+    animation: ${ripple} 2s ease-out 1s infinite;
+  }
+
+  .MuiIconButton-root {
+    z-index: 1;
+    background-color: white;
+    position: relative;
+    transition: all 0.3s ease;
   }
 `;
 
@@ -40,16 +71,24 @@ const ControlPanel = ({
 }) => {
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mb: 3 }}>
-      <Tooltip title={isListening ? "Stop Listening" : "Start Listening"}>
-        <AnimatedMicButton 
-          color={isListening ? "error" : "primary"} 
-          onClick={toggleListening}
-          size="large"
-          className={isListening ? 'active' : ''}
-        >
-          <MicIcon fontSize="large" />
-        </AnimatedMicButton>
-      </Tooltip>
+      <AnimatedMicContainer isListening={isListening} className={isListening ? 'active' : ''}>
+        <Tooltip title={isListening ? "Stop Listening" : "Start Listening"}>
+          <IconButton 
+            color={isListening ? "error" : "primary"} 
+            onClick={toggleListening}
+            size="large"
+            sx={{
+              width: '48px',
+              height: '48px',
+              '&:hover': {
+                backgroundColor: 'white',
+              }
+            }}
+          >
+            <MicIcon fontSize="large" />
+          </IconButton>
+        </Tooltip>
+      </AnimatedMicContainer>
 
       {transcription && (
         <>
