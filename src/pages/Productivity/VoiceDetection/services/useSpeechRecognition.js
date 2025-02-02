@@ -1,45 +1,90 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
-export const useSpeechRecognition = (onTranscriptionChange, onError) => {
-  const recognitionRef = useRef(null);
+export const useEnhancedSpeechRecognition = (options = {}) => {
+  const [isListening, setIsListening] = useState(false);
+  const [error, setError] = useState(null);
+  const timeoutRef = useRef(null);
+
+  const {
+    transcript,
+    listening,
+    resetTranscript,
+    browserSupportsSpeechRecognition,
+    isMicrophoneAvailable
+  } = useSpeechRecognition({
+    commands: options.commands || [],
+    continuous: options.continuous ?? true,
+    interimResults: options.interimResults ?? true,
+  });
+
+  const startListening = () => {
+    try {
+      setError(null);
+      if (!browserSupportsSpeechRecognition) {
+        throw new Error('Browser does not support speech recognition.');
+      }
+      if (!isMicrophoneAvailable) {
+        throw new Error('Microphone permission is required.');
+      }
+      
+      SpeechRecognition.startListening({
+        continuous: options.continuous ?? true,
+        language: options.language || 'en-US',
+      });
+      setIsListening(true);
+      
+      if (options.continuous) {
+        timeoutRef.current = setInterval(() => {
+          if (!listening && isListening) {
+            SpeechRecognition.startListening({
+              continuous: true,
+              language: options.language || 'en-US',
+            });
+          }
+        }, 300);
+      }
+    } catch (err) {
+      setError(err.message);
+      setIsListening(false);
+    }
+  };
+
+  const stopListening = () => {
+    SpeechRecognition.stopListening();
+    setIsListening(false);
+    if (timeoutRef.current) {
+      clearInterval(timeoutRef.current);
+    }
+  };
+
+  const toggleListening = () => {
+    if (isListening) {
+      stopListening();
+    } else {
+      startListening();
+    }
+  };
 
   useEffect(() => {
-    if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      recognitionRef.current = new SpeechRecognition();
-      
-      recognitionRef.current.continuous = true;
-      recognitionRef.current.interimResults = true;
-      recognitionRef.current.lang = 'en-US';
-
-      recognitionRef.current.onresult = (event) => {
-        let interimTranscript = '';
-        let finalTranscript = '';
-
-        for (let i = event.resultIndex; i < event.results.length; i++) {
-          const transcript = event.results[i][0].transcript;
-          if (event.results[i].isFinal) {
-            finalTranscript += transcript;
-          } else {
-            interimTranscript += transcript;
-          }
-        }
-
-        onTranscriptionChange(finalTranscript || interimTranscript);
-      };
-
-      recognitionRef.current.onerror = (event) => {
-        console.error('Speech recognition error:', event.error);
-        onError(event);
-      };
-    }
-
     return () => {
-      if (recognitionRef.current) {
-        recognitionRef.current.stop();
+      stopListening();
+      if (timeoutRef.current) {
+        clearInterval(timeoutRef.current);
       }
     };
-  }, [onTranscriptionChange, onError]);
+  }, []);
 
-  return recognitionRef;
+  return {
+    transcript,
+    isListening,
+    listening,
+    startListening,
+    stopListening,
+    toggleListening,
+    resetTranscript,
+    error,
+    browserSupportsSpeechRecognition,
+    isMicrophoneAvailable
+  };
 };

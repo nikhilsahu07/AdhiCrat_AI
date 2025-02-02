@@ -1,17 +1,28 @@
+// TranscriptionBox.jsx
 import React from 'react';
 import { Box, Paper, Typography, IconButton, TextField } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
-const TranscriptionBox = ({ transcription, isEditing, setIsEditing, setTranscription }) => {
+const TranscriptionBox = ({ transcription, isEditing, setIsEditing, setTranscription, onClear }) => {
   return (
     <Paper elevation={3} sx={{ p: 3, mb: 3 }}>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 2 }}>
         <Typography variant="h6">Original Transcription</Typography>
-        {transcription && !isEditing && (
-          <IconButton onClick={() => setIsEditing(true)}>
-            <EditIcon />
-          </IconButton>
-        )}
+        <Box>
+          {transcription && (
+            <>
+              <IconButton onClick={onClear} title="Clear transcription">
+                <DeleteOutlineIcon />
+              </IconButton>
+              {!isEditing && (
+                <IconButton onClick={() => setIsEditing(true)} title="Edit transcription">
+                  <EditIcon />
+                </IconButton>
+              )}
+            </>
+          )}
+        </Box>
       </Box>
       {isEditing ? (
         <TextField

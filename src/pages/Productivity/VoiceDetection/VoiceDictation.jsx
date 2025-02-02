@@ -1,3 +1,4 @@
+// VoiceDictation.jsx
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, Snackbar, Alert } from '@mui/material';
 import TranscriptionBox from './VoiceComponents/TranscriptionBox';
@@ -6,10 +7,9 @@ import EnhancedTextBox from './VoiceComponents/EnhancedTextBox';
 import SavedNotes from './VoiceComponents/SavedNotes';
 import { processTextWithGemini } from './services/geminiService';
 import { loadSavedNotes, saveNote } from './services/notesService';
-import { useSpeechRecognition } from './services/useSpeechRecognition';
+import { useEnhancedSpeechRecognition } from './services/useSpeechRecognition';
 
 function VoiceDictation() {
-  const [isListening, setIsListening] = useState(false);
   const [transcription, setTranscription] = useState('');
   const [enhancedText, setEnhancedText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -18,10 +18,57 @@ function VoiceDictation() {
   const [isEditing, setIsEditing] = useState(false);
   const [savedNotes, setSavedNotes] = useState([]);
 
+  const {
+    transcript,
+    isListening,
+    toggleListening,
+    stopListening,
+    resetTranscript,
+    error,
+    browserSupportsSpeechRecognition,
+    isMicrophoneAvailable
+  } = useEnhancedSpeechRecognition({
+    continuous: true,
+    language: 'en-US'
+  });
+
+  const handleClearTranscription = () => {
+    setTranscription('');
+    resetTranscript();
+    setEnhancedText(''); // Optional: clear enhanced text as well
+    setIsEditing(false);
+    showSnackbar('Transcription cleared', 'info');
+  };
+
+  // Update transcription when transcript changes
+  useEffect(() => {
+    if (transcript) {
+      setTranscription(transcript);
+    }
+  }, [transcript]);
+
+  // Load saved notes on mount
   useEffect(() => {
     const notes = loadSavedNotes();
     setSavedNotes(notes);
   }, []);
+
+  // Handle speech recognition errors
+  useEffect(() => {
+    if (error) {
+      showSnackbar(error, 'error');
+    }
+  }, [error]);
+
+  // Check browser support
+  useEffect(() => {
+    if (!browserSupportsSpeechRecognition) {
+      showSnackbar('Browser does not support speech recognition.', 'error');
+    }
+    if (!isMicrophoneAvailable) {
+      showSnackbar('Microphone permission is required.', 'error');
+    }
+  }, [browserSupportsSpeechRecognition, isMicrophoneAvailable]);
 
   const showSnackbar = (message, severity) => {
     setSnackbar({ open: true, message, severity });
@@ -29,31 +76,6 @@ function VoiceDictation() {
 
   const handleCloseSnackbar = () => {
     setSnackbar(prev => ({ ...prev, open: false }));
-  };
-
-  const recognitionRef = useSpeechRecognition(
-    (text) => setTranscription(text),
-    () => {
-      setIsListening(false);
-      showSnackbar('Speech recognition error. Please try again.', 'error');
-    }
-  );
-
-  const toggleListening = () => {
-    if (isListening) {
-      recognitionRef.current?.stop();
-      setIsListening(false);
-    } else {
-      recognitionRef.current?.start();
-      setIsListening(true);
-    }
-  };
-
-  const stopListening = () => {
-    if (isListening) {
-      recognitionRef.current?.stop();
-      setIsListening(false);
-    }
   };
 
   const handleTextProcessing = async (isGrammarOnly = false) => {
@@ -125,6 +147,7 @@ function VoiceDictation() {
         isEditing={isEditing}
         setIsEditing={setIsEditing}
         setTranscription={setTranscription}
+        onClear={handleClearTranscription}
       />
 
       <ControlPanel 

@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@babel/runtime": "^7.26.7",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@fullcalendar/common": "^5.11.5",
@@ -30,11 +31,17 @@
     "react-dom": "^18.3.1",
     "react-quill": "^2.0.0",
     "react-router": "^7.1.4",
+    "react-speech-recognition": "^3.10.0",
+    "regenerator-runtime": "^0.14.1",
     "string-strip-html": "^13.4.8",
     "tailwindcss": "^4.0.1",
     "uuid": "^11.0.5"
   },
   "devDependencies": {
+    "@babel/core": "^7.26.7",
+    "@babel/plugin-transform-runtime": "^7.25.9",
+    "@babel/preset-env": "^7.26.7",
+    "@babel/preset-react": "^7.26.3",
     "@eslint/js": "^9.17.0",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
