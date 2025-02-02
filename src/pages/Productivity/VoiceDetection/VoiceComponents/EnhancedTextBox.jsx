@@ -1,29 +1,28 @@
-// src/components/EnhancedTextView.jsx
-
+// File: pages/Productivity/VoiceDetection/components/EnhancedTextBox.jsx
 import React from 'react';
-import { Paper, Box, Typography, IconButton } from '@mui/material';
+import { Box, Paper, Typography, IconButton } from '@mui/material';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 
-const EnhancedTextView = ({ text, onSave }) => {
-  if (!text) return null;
+const EnhancedTextBox = ({ enhancedText, handleSaveNote }) => {
+  if (!enhancedText) return null;
 
   return (
-    <Paper elevation={3} sx={{ p: 3, mb: 3, backgroundColor: '#e3f2fd' }}>
+    <Paper variant='elevation' elevation={3} sx={{ p: 3, mb: 3}}>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <Typography variant="h6" gutterBottom>
           Enhanced Text
         </Typography>
         <IconButton
           color="primary"
-          onClick={onSave}
+          onClick={handleSaveNote}
           title="Bookmark this text"
         >
           <BookmarkIcon />
         </IconButton>
       </Box>
-      <Typography variant="body1">{text}</Typography>
+      <Typography variant="body1">{enhancedText}</Typography>
     </Paper>
   );
 };
 
-export default EnhancedTextView;
+export default EnhancedTextBox;

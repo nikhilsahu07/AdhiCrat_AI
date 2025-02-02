@@ -1,22 +1,15 @@
-// src/components/TranscriptionView.jsx
-
+// File: pages/Productivity/VoiceDetection/components/TranscriptionBox.jsx
 import React from 'react';
-import { Paper, Box, Typography, IconButton, TextField } from '@mui/material';
+import { Box, Paper, Typography, IconButton, TextField } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 
-const TranscriptionView = ({ 
-  transcription, 
-  isEditing, 
-  onEdit, 
-  onEditComplete, 
-  onChange 
-}) => {
+const TranscriptionBox = ({ transcription, isEditing, setIsEditing, setTranscription }) => {
   return (
     <Paper elevation={3} sx={{ p: 3, mb: 3 }}>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 2 }}>
         <Typography variant="h6">Original Transcription</Typography>
         {transcription && !isEditing && (
-          <IconButton onClick={onEdit}>
+          <IconButton onClick={() => setIsEditing(true)}>
             <EditIcon />
           </IconButton>
         )}
@@ -26,8 +19,8 @@ const TranscriptionView = ({
           fullWidth
           multiline
           value={transcription}
-          onChange={(e) => onChange(e.target.value)}
-          onBlur={onEditComplete}
+          onChange={(e) => setTranscription(e.target.value)}
+          onBlur={() => setIsEditing(false)}
           autoFocus
         />
       ) : (
@@ -39,4 +32,4 @@ const TranscriptionView = ({
   );
 };
 
-export default TranscriptionView;
+export default TranscriptionBox;

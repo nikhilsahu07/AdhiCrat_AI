@@ -1,10 +1,7 @@
-// src/hooks/useSpeechRecognition.js
+// File: pages/Productivity/VoiceDetection/services/useSpeechRecognition.js
+import { useEffect, useRef } from 'react';
 
-import { useState, useEffect, useRef } from 'react';
-
-const useSpeechRecognition = () => {
-  const [isListening, setIsListening] = useState(false);
-  const [transcription, setTranscription] = useState('');
+export const useSpeechRecognition = (onTranscriptionChange, onError) => {
   const recognitionRef = useRef(null);
 
   useEffect(() => {
@@ -29,12 +26,12 @@ const useSpeechRecognition = () => {
           }
         }
 
-        setTranscription(finalTranscript || interimTranscript);
+        onTranscriptionChange(finalTranscript || interimTranscript);
       };
 
       recognitionRef.current.onerror = (event) => {
         console.error('Speech recognition error:', event.error);
-        setIsListening(false);
+        onError(event);
       };
     }
 
@@ -43,33 +40,7 @@ const useSpeechRecognition = () => {
         recognitionRef.current.stop();
       }
     };
-  }, []);
+  }, [onTranscriptionChange, onError]);
 
-  const startListening = () => {
-    recognitionRef.current?.start();
-    setIsListening(true);
-  };
-
-  const stopListening = () => {
-    recognitionRef.current?.stop();
-    setIsListening(false);
-  };
-
-  const toggleListening = () => {
-    if (isListening) {
-      stopListening();
-    } else {
-      startListening();
-    }
-  };
-
-  return {
-    isListening,
-    transcription,
-    setTranscription,
-    toggleListening,
-    stopListening
-  };
+  return recognitionRef;
 };
-
-export default useSpeechRecognition;
