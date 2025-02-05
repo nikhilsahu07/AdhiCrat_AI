@@ -25,7 +25,7 @@ const cards = [
   {
     id: 3,
     title: "Translation",
-    description: "Real time Hindi-English translation with voice dictation.",
+    description: "Real time Hindi-English translation with voice dictation and bureaucratic context retention.",
     route: "app/productivity/translation",
   },
   {
