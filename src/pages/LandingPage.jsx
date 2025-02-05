@@ -8,31 +8,32 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import CardActionArea from "@mui/material/CardActionArea";
+import { Link } from "react-router";
 
 const cards = [
   {
     id: 1,
     title: "Voice Dictation",
-    description: "Plants are essential for all life.",
-    route: "productivity/voice-dictation",
+    description: "Fast accurate note taking with autocorretion, personalized enhancement and note keeping.",
+    route: "app/productivity/voice-dictation",
   },
   {
     id: 2,
     title: "Task Reminder",
-    description: "Animals are a part of nature.",
-    route: "productivity/task-reminder",
+    description: "Smart reminders and auto scheduling with Google sync and live notifications.",
+    route: "app/productivity/task-reminder",
   },
   {
     id: 3,
     title: "Translation",
-    description: "Humans depend on plants and animals for survival.",
-    route: "productivity/translation",
+    description: "Real time Hindi-English translation with voice dictation.",
+    route: "app/productivity/translation",
   },
   {
     id: 4,
     title: "AI Writer",
-    description: "Humans depend on plants and animals for survival.",
-    route: "productivity/ai-writer",
+    description: "AI powered quick speech and password protected private communication.",
+    route: "app/productivity/ai-writer",
   },
 ];
 
@@ -83,6 +84,7 @@ function LandingPage() {
             }}
           >
             {cards.map((card, index) => (
+            <Link to={card.route}>
               <Card
                 sx={{ display: "flex", justifyContent: "center" }}
                 key={index}
@@ -110,6 +112,7 @@ function LandingPage() {
                   </CardContent>
                 </CardActionArea>
               </Card>
+              </Link>
             ))}
           </Box>
         </Box>
