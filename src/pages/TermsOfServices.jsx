@@ -94,8 +94,8 @@ const TermsOfService = () => {
         <Typography variant="h6">8. Contact Us</Typography>
         <Typography variant="body1">
           If you have any questions about these Terms, please contact us at{" "}
-          <Link href="mailto:support@yourapp.com" color="primary">
-            support@yourapp.com
+          <Link href="mailto:heynikhil07@gmail.com" color="primary">
+            heynikhil07@gmail.com
           </Link>
           .
         </Typography>

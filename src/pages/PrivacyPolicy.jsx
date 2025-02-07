@@ -17,7 +17,7 @@ const PrivacyPolicy = () => {
         <Typography variant="h6">1. Introduction</Typography>
         <Typography variant="body1">
           We respect your privacy and are committed to being transparent about
-          how our AI-powered application (the "App") operates. This Privacy Policy 
+          how our AI-powered application AdhiCrat AI operates. This Privacy Policy 
           explains how we handle user data.
         </Typography>
       </Box>
@@ -79,8 +79,8 @@ const PrivacyPolicy = () => {
         <Typography variant="h6">7. Contact Us</Typography>
         <Typography variant="body1">
           If you have any questions about this Privacy Policy, please contact us at{" "}
-          <Link href="mailto:support@yourapp.com" color="primary">
-            support@yourapp.com
+          <Link href="mailto:heynikhil07@gmail." color="primary">
+            heynikhil07@gmail.
           </Link>.
         </Typography>
       </Box>
