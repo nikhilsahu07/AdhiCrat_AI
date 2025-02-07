@@ -1,6 +1,5 @@
 import React from "react";
 import { Box, Container, Typography, Link, Divider } from "@mui/material";
-import { Facebook, Twitter, LinkedIn, GitHub } from "@mui/icons-material";
 
 const Footer = () => {
   return (
@@ -18,7 +17,6 @@ const Footer = () => {
         maxWidth="lg"
         sx={{
           display: "flex",
-          background: 'red',
           justifyContent: "space-between",
           alignItems: "center",
           minHeight: "1.5rem",

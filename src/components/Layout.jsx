@@ -89,8 +89,8 @@ export default function Layout() {
         <PageContainer>
           <Outlet demoTheme={demoTheme}/>
         </PageContainer>
-      </DashboardLayout>
       <Footer />
+      </DashboardLayout>
     </AppProvider>
   );
 }
