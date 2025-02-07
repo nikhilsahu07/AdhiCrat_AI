@@ -6,6 +6,8 @@ import { AppProvider } from "@toolpad/core/AppProvider";
 import { DashboardLayout } from "@toolpad/core/DashboardLayout";
 import { PageContainer } from "@toolpad/core/PageContainer";
 import { Outlet, useLocation, useNavigate } from "react-router";
+import Footer from "./Footer/Footer";
+import { BottomNavigation } from '@mui/material';
 
 const NAVIGATION = [
   //  comming soon
@@ -88,6 +90,7 @@ export default function Layout() {
           <Outlet demoTheme={demoTheme}/>
         </PageContainer>
       </DashboardLayout>
+      <Footer />
     </AppProvider>
   );
 }

@@ -15,6 +15,8 @@ import NotFound from "./pages/NotFound";
 import Layout from "./components/Layout";
 import { BrowserRouter, Route, Routes } from "react-router";
 import AppLayoutPlaceholder from "./components/AppLayoutPlaceholder";
+import TermsOfServices from './pages/TermsOfServices';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 function AppRouter() {
   return (
@@ -43,6 +45,9 @@ function AppRouter() {
           <Route path="info-management/file-organizer" element={<FileOrganizer />} />
           <Route path="info-management/news" element={<NewsApp />} />
         </Route>
+
+        <Route path='terms-of-services' element={<TermsOfServices />}/>
+        <Route path='privacy-policy' element={<PrivacyPolicy />}/>
 
         {/* 404 Page */}
         <Route path="*" element={<NotFound />} />
