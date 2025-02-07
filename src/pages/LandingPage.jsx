@@ -9,7 +9,6 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import CardActionArea from "@mui/material/CardActionArea";
 import { MouseIcon } from "lucide-react";
-// import './LandingPage.css';
 
 const cards = [
   {
@@ -42,7 +41,7 @@ function LandingPage() {
   const [selectedCard, setSelectedCard] = React.useState(0);
   return (
     <>
-      <section className="min-h-[95svh] flex flex-col bg-[#e1e1e1] justify-center items-center gap-11">
+      <section className="min-h-screen flex flex-col bg-[#e1e1e1] justify-center items-center gap-11">
         <BlurText
           text="ADHICRAT"
           delay={150}
@@ -62,7 +61,7 @@ function LandingPage() {
             className="text-sm md:text-lg"
           />
         </Link>
-        <MouseIcon className="absolute bottom-11 scroll-down"/>
+        {/* <MouseIcon className="absolute bottom-11 scroll-down"/> */}
         <SplashCursor />
       </section>
       <section className="h-screen p-6 bg-[#1e1e1e] text-[#e1e1e1] flex flex-col items-center justify-center gap-y-11">
